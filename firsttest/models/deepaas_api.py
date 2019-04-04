@@ -73,8 +73,23 @@ def train(train_args):
         Json dict with the user's configuration parameters.
         Can be loaded with json.loads() or with yaml.safe_load()    
     """
+    data_origin = 'deepnc:/train_genes14.tsv'
+    data_copy = os.path.join(cfg.BASE_DIR,
+                              'firsttest',
+                              'models')
+    command = (['rclone', 'copy', data_origin, data_copy])
+    result = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = result.communicate()
+    print(error)
 
-    run_results = { "status": "Not implemented in the model (train)",
+    training_script=os.path.join(cfg.BASE_DIR,
+                              'firsttest',
+                              'models','main_prog.py')
+    print(training_script)
+    code = subprocess.call(["THEANO_FLAGS=device=cuda0","python3", training_script, "train_genes14.tsv"])
+    print(code)
+
+    run_results = { "status": "Training finished",
                     "train_args": [],
                     "training": [],
                   }

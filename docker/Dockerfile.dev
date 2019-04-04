@@ -5,7 +5,7 @@
 # $> docker run -ti -v ~/firsttest:/srv/app dockerimage /bin/bash
 ##################
 # Base image, e.g. tensorflow/tensorflow:1.7.0
-FROM nvidia/cuda
+FROM nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04
 
 LABEL maintainer='Carlos Garcia'
 # tax class
