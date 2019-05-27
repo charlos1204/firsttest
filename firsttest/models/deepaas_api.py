@@ -74,7 +74,7 @@ def train(train_args):
         Json dict with the user's configuration parameters.
         Can be loaded with json.loads() or with yaml.safe_load()    
     """
-    data_origin = 'deepnc:/train_genes14.tsv'
+    data_origin = 'deepnc:/train_genes.tsv'
     data_copy = os.path.join(cfg.BASE_DIR,
                               'firsttest',
                               'models')
@@ -87,7 +87,7 @@ def train(train_args):
                               'firsttest',
                               'models','main_prog.py')
     print(training_script)
-    code = subprocess.call(["THEANO_FLAGS=device=cuda0","python", training_script, "train_genes14.tsv"])# cambie python3 por python
+    code = subprocess.call(["THEANO_FLAGS=device=cuda0","python", training_script, "train_genes.tsv"])# cambie python3 por python
     print(code)
 
     run_results = { "status": "Training finished",
