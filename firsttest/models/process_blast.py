@@ -11,10 +11,10 @@ def make_alignments_json(fname, iden=0, eval=1e-5, len=25, BitScore=True):
 
     for i in open(fname):
         i = i.strip().split("\t")
-        l1 = max([float(i[7]), float(i[6])])
-        l2 = max([float(i[9]), float(i[8])])
+        #l1 = max([float(i[7]), float(i[6])])
+        #l2 = max([float(i[9]), float(i[8])])
 
-        coverage = min([l1,l2])/max([l1,l2])
+        #coverage = min([l1,l2])/max([l1,l2])
 
 
         # if i[0].split("|")[1]=="UNIPROT" and float(i[2])==100 and coverage==1: continue # check if there is duplicate, only enabled in training, remove it for testing

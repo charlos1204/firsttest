@@ -4,7 +4,6 @@ import theano
 floatX = theano.config.floatX
 from sklearn import preprocessing
 
-#import matplotlib.pyplot as plt
 
 def make_xy2(alignments):
 	print ("getting sample names and matrix X")
@@ -14,10 +13,8 @@ def make_xy2(alignments):
 
 	print ("getting labels")
 	Y=[i.split("|")[2] for i in samples]
-
 	Y_dict = {i:ix for ix,i in enumerate(set(Y))}
 	Y_rev = {y:x for x,y in Y_dict.items()}
-
 	Y = np.array([Y_dict[i] for i in Y], dtype='int32')
 
 	print ("Formating X to matrix")

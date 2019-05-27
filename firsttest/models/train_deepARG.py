@@ -8,6 +8,7 @@ from lasagne.updates import sgd, nesterov_momentum
 from nolearn.lasagne import NeuralNet
 import theano
 from model import model
+import pandas
 
 floatX = theano.config.floatX
 
@@ -88,8 +89,10 @@ def main(data):
 
 	preds = clf.predict(x_test)
 
-	print(classification_report(y_test, preds,x_test_names))
-
+	report = classification_report(y_test, preds,x_test_names)
+	df_report = pandas.DataFrame(report).transpose()
+	training_epochs = "/data/training100epochs.txt"
+	df_report.to_csv(training_epochs, sep='\t', index=False)
 
 
 
