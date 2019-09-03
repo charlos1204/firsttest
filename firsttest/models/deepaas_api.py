@@ -65,8 +65,8 @@ def predict_url(*args):
 # Uncomment the following two lines
 # if you allow only authorized people to do training
 ###
-#import flaat
-#@flaat.login_required()
+# import flaat
+# @flaat.login_required()
 def train(train_args):
     """
     Train network
@@ -76,29 +76,29 @@ def train(train_args):
     """
     data_origin = 'rshare:/training_data'
     data_copy = os.path.join(cfg.BASE_DIR,
-                              'data')
+                             'data')
     command = (['rclone', 'copy', data_origin, data_copy])
     result = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = result.communicate()
     print(error)
 
-    training_script=os.path.join(cfg.BASE_DIR,
-                              'firsttest',
-                              'models','train_model_1D.py')
+    training_script = os.path.join(cfg.BASE_DIR,
+                                   'firsttest',
+                                   'models', 'train_model_1D.py')
     print(training_script)
-    code = subprocess.call(["python", training_script])# cambie python3 por python
+    code = subprocess.call(["python", training_script])  # cambie python3 por python
     print(code)
 
     data_origin = os.path.join(cfg.BASE_DIR,
-                              'model_trained')
+                               'model_trained')
     data_copy = 'rshare:/model_trained/'
 
-   command = (['rclone', 'copy', data_origin, data_copy])
+    command = (['rclone', 'copy', data_origin, data_copy])
 
-    run_results = { "status": "Training finished",
-                    "train_args": [],
-                    "training": [],
-                  }
+    run_results = {"status": "Training finished",
+                   "train_args": [],
+                   "training": [],
+                   }
 
     run_results["train_args"].append(train_args)
 
@@ -114,7 +114,7 @@ def get_train_args():
 
     # convert default values and possible 'choices' into strings
     for key, val in train_args.items():
-        val['default'] = str(val['default']) #yaml.safe_dump(val['default']) #json.dumps(val['default'])
+        val['default'] = str(val['default'])  # yaml.safe_dump(val['default']) #json.dumps(val['default'])
         if 'choices' in val:
             val['choices'] = [str(item) for item in val['choices']]
 
@@ -130,7 +130,7 @@ def main():
     """
 
     if args.method == 'get_metadata':
-        get_metadata()       
+        get_metadata()
     elif args.method == 'train':
         train(args)
     else:
