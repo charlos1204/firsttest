@@ -110,7 +110,7 @@ def get_train_args():
     """
     Returns a dict of dicts to feed the deepaas API parser
     """
-    train_args = cfg.train_args
+    train_args = {} #cfg.train_args
 
     # convert default values and possible 'choices' into strings
     for key, val in train_args.items():
