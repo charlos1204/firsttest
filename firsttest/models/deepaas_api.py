@@ -5,7 +5,7 @@ Model description
 
 import argparse
 import pkg_resources
-# import project's config.py
+import subprocess
 import firsttest.config as cfg
 import os
 
