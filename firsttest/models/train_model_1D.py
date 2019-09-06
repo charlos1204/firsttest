@@ -30,11 +30,11 @@ print('running option = ', opt)
 
 if opt == 1:
     print('loading data...')
-    info = pickle.load(open("/data/info.pkl", 'rb'))
-    X_train = pickle.load(open("/data/x_train.pkl", 'rb'))
+    info = pickle.load(open("/srv/firsttest/data/info.pkl", 'rb'))
+    X_train = pickle.load(open("/srv/firsttest/data/x_train.pkl", 'rb'))
     #X_test = pickle.load(open("/data/x_test.pkl", 'rb'))
 
-    Y_train = pickle.load(open("/data/y_train.pkl", 'rb'))
+    Y_train = pickle.load(open("/srv/firsttest/data/y_train.pkl", 'rb'))
     #Y_test = pickle.load(open("/data/y_test.pkl", 'rb'))
 
     print('defining model:')
@@ -80,8 +80,8 @@ if opt == 1:
                         validation_split=0.2)
 
 
-    X_test = pickle.load(open("/data/x_test.pkl", 'rb'))
-    Y_test = pickle.load(open("/data/y_test.pkl", 'rb'))
+    X_test = pickle.load(open("/srv/firsttest/data/x_test.pkl", 'rb'))
+    Y_test = pickle.load(open("/srv/firsttest/data/y_test.pkl", 'rb'))
 
     X_test = sequence.pad_sequences(X_test, maxlen=max_len)
     results_eval = model.evaluate(X_test, Y_test, batch_size=btch_size)
@@ -93,10 +93,10 @@ if opt == 1:
     
     # serialize model to JSON
     model_json = model.to_json()
-    with open("/model_trained/model_1D.json", "w") as json_file:
+    with open("/srv/firsttest/model_trained/model_1D.json", "w") as json_file:
         json_file.write(model_json)
     # serialize weights to HDF5
-    model.save_weights("/model_trained/model_1D.h5")
+    model.save_weights("/srv/firsttest/model_trained/model_1D.h5")
     print("Saved model to disk...")
     print('done...')
 

@@ -74,7 +74,7 @@ def train(train_args):
         Json dict with the user's configuration parameters.
         Can be loaded with json.loads() or with yaml.safe_load()    
     """
-    data_origin = 'rshare:/training_data'
+    data_origin = 'rshare:/traning_data'
     data_copy = os.path.join(cfg.BASE_DIR,
                              'data')
     command = (['rclone', 'copy', data_origin, data_copy])
@@ -137,20 +137,20 @@ def main():
         get_metadata()
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Model parameters')
-
-    # get arguments configured for get_train_args()
-    train_args = get_train_args()
-    for key, val in train_args.items():
-        parser.add_argument('--%s' % key,
-                            default=val['default'],
-                            type=type(val['default']),
-                            help=val['help'])
-
-    parser.add_argument('--method', type=str, default="get_metadata",
-                        help='Method to use: get_metadata (default), \
-                        predict_file, predict_data, predict_url, train')
-    args = parser.parse_args()
-
-    main()
+#if __name__ == '__main__':
+#    parser = argparse.ArgumentParser(description='Model parameters')
+#
+#    # get arguments configured for get_train_args()
+#    train_args = get_train_args()
+#    for key, val in train_args.items():
+#        parser.add_argument('--%s' % key,
+#                            default=val['default'],
+#                            type=type(val['default']),
+#                            help=val['help'])
+#
+#    parser.add_argument('--method', type=str, default="get_metadata",
+#                        help='Method to use: get_metadata (default), \
+#                        predict_file, predict_data, predict_url, train')
+#    args = parser.parse_args()
+#
+#    main()
