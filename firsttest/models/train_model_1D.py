@@ -51,7 +51,7 @@ if opt == 1:
 
     print('reshaping data...')
 
-    X_train = sequence.pad_sequences(X_train, maxlen=max_len)
+    #X_train = sequence.pad_sequences(X_train, maxlen=max_len)
     #X_test = sequence.pad_sequences(X_test, maxlen=max_len)
 
     print('training dataset: ', X_train.shape)
@@ -83,7 +83,7 @@ if opt == 1:
     X_test = pickle.load(open("/srv/firsttest/data/x_test.pkl", 'rb'))
     Y_test = pickle.load(open("/srv/firsttest/data/y_test.pkl", 'rb'))
 
-    X_test = sequence.pad_sequences(X_test, maxlen=max_len)
+    #X_test = sequence.pad_sequences(X_test, maxlen=max_len)
     results_eval = model.evaluate(X_test, Y_test, batch_size=btch_size)
 
     print('training the model... done!!!')
