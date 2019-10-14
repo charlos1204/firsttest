@@ -8,6 +8,7 @@ import pkg_resources
 import subprocess
 import firsttest.config as cfg
 import os
+import time
 
 
 def get_metadata():
@@ -89,6 +90,7 @@ def train(train_args):
     code = subprocess.call(["python", training_script])  # cambie python3 por python
     print(code)
 
+    time.sleep(60)
     data_origin = os.path.join(cfg.BASE_DIR,
                                'model_trained')
     data_copy = 'rshare:/model_trained/'

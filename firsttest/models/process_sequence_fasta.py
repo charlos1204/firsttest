@@ -95,7 +95,8 @@ def to_word_index(sequence, type):
     else:
         nuc_alphabet = ['A', 'G', 'T', 'C', 'U','N']
 
-        nuc_to_index = dict((c, i) for i, c in enumerate(nuc_alphabet))
+        #nuc_to_index = dict((c, i) for i, c in enumerate(nuc_alphabet))
+        nuc_to_index = dict((c, (i + 1)) for i, c in enumerate(nuc_alphabet))
         nuc_index_encoded = [nuc_to_index[char] for char in sequence if char in nuc_alphabet]
 
         return nuc_index_encoded
